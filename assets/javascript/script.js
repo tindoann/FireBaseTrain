@@ -27,9 +27,9 @@ $("#add-train-btn").on("click", function (event) {
   // Creates local "temporary" object for holding train data
   let newTrain = {
     name: trainName,
-    destination: destination,
-    frequency: frequency,
-    first_train: first_train
+    destination,
+    frequency,
+    first_train
   };
 
   // Uploads train data to the database
@@ -51,10 +51,10 @@ database.ref().on("child_added", function (childSnapshot) {
   const cv = childSnapshot.val()
 
   // Store everything into a variable.
-  let trainName = cv.name;
-  let destination = cv.destination;
-  let frequency = cv.frequency;
-  let first_train = cv.first_train;
+  trainName = cv.name;
+  destination = cv.destination;
+  frequency = cv.frequency;
+  first_train = cv.first_train;
 
   // train start
   let minAway = moment(frequency, "HH:mm");
@@ -71,7 +71,7 @@ database.ref().on("child_added", function (childSnapshot) {
       <td id='destination'>${destination}</td>
       <td id='nextArrival'>${nextArrival}</td>
       <td id='minAway'>${minAway}</td>
-      <td id='ETA'>$</td>
+      <td id='ETA'></td>
    </tr>`
 
   // Append the new row to the table
