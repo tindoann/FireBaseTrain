@@ -59,7 +59,7 @@ database.ref().on("child_added", function (childSnapshot) {
   // train start
   let minAway = moment(frequency, "HH:mm");
 
-  // Calculate 
+  // Calculate when the next train will arrive; this should be relative to the current time.
   let nextArrival = moment().diff(moment(frequency, "X"), "months");
   console.log(nextArrival);
 
@@ -68,7 +68,7 @@ database.ref().on("child_added", function (childSnapshot) {
   let newRow =
     `<tr>
       <td id='trainName'>${trainName}</td>
-      <td id='destination'>${destination}</td>
+      <td id='destination'>${}</td>
       <td id='nextArrival'>${nextArrival}</td>
       <td id='minAway'>${minAway}</td>
       <td id='ETA'></td>
